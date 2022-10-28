@@ -1,6 +1,7 @@
 from math import sqrt
 import torch
 from torch import nn
+from torch.autograd import Variable
 from torch.nn import functional as F
 from layers import ConvNorm, LinearNorm
 from utils import to_gpu, get_mask_from_lengths
