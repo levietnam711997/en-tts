@@ -6,21 +6,21 @@ from os.path import join
 import pymongo
 from utils import save_content
 
-URI="mongodb://test-ai:Hahalolo%402022@10.10.12.201:27017,10.10.12.202:27017,10.10.12.203:27017/?replicaSet=test&authSource=test-ai"
+URI="text"
 client = pymongo.MongoClient(URI)
-db=client['test-ai']
+db=client['text']
 audios_folder="audios"
 content_folder='test-cases'
-consumer = KafkaConsumer(bootstrap_servers = '10.10.15.72:9092,10.10.15.73:9092,10.10.15.74:9092',
-                        group_id= 'social_consumer_namlv',
-                        auto_offset_reset =  'latest',
-                        security_protocol =  'SASL_PLAINTEXT',
-                        sasl_mechanism = 'SCRAM-SHA-512',
-                        sasl_plain_username  =  'admin-hahalolo',
-                        sasl_plain_password  =  'Hahalolo@2021',
+consumer = KafkaConsumer(bootstrap_servers = 'text',
+                        group_id= 'text',
+                        auto_offset_reset =  'text',
+                        security_protocol =  'text',
+                        sasl_mechanism = 'text',
+                        sasl_plain_username  =  'text',
+                        sasl_plain_password  =  'text',
 )
 
-consumer.subscribe(["topic_social_post.test-api-social.post"])
+consumer.subscribe(["text"])
 
 for message in consumer:
     
