@@ -1,28 +1,14 @@
 import glob
 import os
-import matplotlib
 import torch
 from torch.nn.utils import weight_norm
 import numpy as np
 from scipy.io.wavfile import read
-matplotlib.use("Agg")
-import matplotlib.pylab as plt
 import re
 from symbols import symbols
 import cleaners
 _curly_re = re.compile(r'(.*?)\{(.+?)\}(.*)')
 _symbol_to_id = {s: i for i, s in enumerate(symbols)}
-
-def plot_spectrogram(spectrogram):
-    fig, ax = plt.subplots(figsize=(10, 2))
-    im = ax.imshow(spectrogram, aspect="auto", origin="lower",
-                   interpolation='none')
-    plt.colorbar(im, ax=ax)
-
-    fig.canvas.draw()
-    plt.close()
-
-    return fig
 
 
 def init_weights(m, mean=0.0, std=0.01):
@@ -30,6 +16,10 @@ def init_weights(m, mean=0.0, std=0.01):
     if classname.find("Conv") != -1:
         m.weight.data.normal_(mean, std)
 
+
+def save_content(file_directory,content):
+  with open(file_directory,'w') as f:
+    f.write(content)
 
 def apply_weight_norm(m):
     classname = m.__class__.__name__
